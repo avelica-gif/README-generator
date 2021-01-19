@@ -1,9 +1,11 @@
-# ${data.title}
+// function to generate markdown for README
+function generateMarkdown(data) {
+  return `# ${data.title}
 ## Description
 ### ${data.description}
 
 ## Table of Contents
-- [Installation] (#installation)
+1. [Installation] (#installation)
 2. [Usage] (#usuage)
 3. [License] (#license)
 4. [Contributing] (#contributing)
@@ -30,3 +32,8 @@
 ## Link to Deployed Application:
 ### [${data.URLName}][${data.URl}] <a name="link"></a>
 ## ![${data.altText}][${data.photFile}] <a name="screenshot"></a>
+`;
+}
+
+module.exports = generateMarkdown;
+

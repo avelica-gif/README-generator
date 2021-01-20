@@ -11,7 +11,20 @@ const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown.js')
 
 
-inquirer
+//may want to take the info from the object and then format it --look at template literals
+//once it is formatted, write to file
+// array of questions for user
+
+
+// function to write README file
+function writeReadme(filename, data) {
+  return fs.writeFileSync(path.join(process.cwd(), filename), data)
+  
+}
+
+// function to initialize program
+function init() {
+  inquirer
   .prompt([
     {
       type: 'input',
@@ -53,25 +66,14 @@ inquirer
       message: 'What licesnse do you want to use?',
       choices: ['MIT', 'another'],
       name: 'license',
-    },
+    }
   ])
   .then((response) =>
-    console.log(response) //returns an object of the users response
-  );
-
-//may want to take the info from the object and then format it --look at template literals
-//once it is formatted, write to file
-// array of questions for user
-const questions = [
-
-];
-
-// function to write README file
-function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
+    //console.log(response) //returns an object of the users response
+    //use fs to write to the readme file
+    writeReadme('README.md', generateMarkdown({...response}))
+    
+  )
 
 }
 
